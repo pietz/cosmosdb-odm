@@ -11,16 +11,16 @@ class Items(CosmosModel):
     age: int
     is_active: bool
 
-# This is a singleton
+# Creates a singleton that will be used in the background
 cosmos_conn = CosmosConnection.from_connection_string("CONNECTION_STR", "DB_NAME")
 
-# Read
+# Read from collection "Items"
 item = Items.get(id="ID")
 
 # Read if PK != ID
 item = Items.get(id="ID", pk="PARTITION_KEY")
 
-# Random ID is generated
+# Random ID is generated in the background
 item = Items(name="Pietz", age=33, is_active=True)
 print(item.id)
 
